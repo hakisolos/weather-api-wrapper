@@ -19,7 +19,7 @@ app.get("/api", async(c) => {
         }, 401)
     }
     const isPresent = await redis.get(`api-req-${location}`)
-    const res = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/lagos?key=${key}&include=current`)
+    const res = await axios.get(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location.trim()}?key=${key}&include=current`)
  
     if(isPresent) {
         return c.json({
